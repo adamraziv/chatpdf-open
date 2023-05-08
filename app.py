@@ -42,7 +42,7 @@ def main():
         docs = knowledge_base.similarity_search(user_question)
         
         repo_id = "google/flan-ul2"
-        llm = HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature":0, "max_length":64})
+        llm = HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature":0.1, "max_length":64})
         chain = load_qa_chain(llm, chain_type="stuff")
         response = chain.run(input_documents=docs, question=user_question)
            
